@@ -4,20 +4,33 @@ using System;
 using System.Text.Encodings.Web;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using System.Linq;
 
 namespace SWApp.Controllers
 {
     public class FilmsController : Controller
     {
         IRepository<Film> filmsRepo = new Repository<Film>();
-        
+        IRepository<Specie> speciesRepo = new Repository<Specie>();
+        IRepository<Starship> starshipsRepo = new Repository<Starship>();
+        IRepository<Vehicle> vehiclesRepo = new Repository<Vehicle>();
+        IRepository<Planet> planetsRepo = new Repository<Planet>();
+        IRepository<Person> personsRepo = new Repository<Person>();
         // 
         // GET: /Films/
         public IActionResult Index()
         {   
-            var films = filmsRepo.GetEntities(size: int.MaxValue);
+            ICollection<Film> films = filmsRepo.GetEntities(size: int.MaxValue);
+            Film[] titles = new Film[films.Count];
+            
+            // Reroder films in ascending order by id (in url)
+            foreach(Film film in films)
+            {
+                int id = Int32.Parse(Regex.Match(film.Url, @"\d+").Value) - 1;
+                titles[id] = film;
+            }
 
-            ViewData["filmList"] = films;
+            ViewData["filmList"] = titles;
             return View();
         }
 
@@ -36,17 +49,25 @@ namespace SWApp.Controllers
             ViewData["Producer"] = film.Producer;
             ViewData["ReleaseDate"] = film.ReleaseDate;
 
-            IRepository<Specie> speciesRepo = new Repository<Specie>();
-            IRepository<Starship> starshipsRepo = new Repository<Starship>();
-            IRepository<Vehicle> vehiclesRepo = new Repository<Vehicle>();
-            IRepository<Planet> planetsRepo = new Repository<Planet>();
-            IRepository<Person> personsRepo = new Repository<Person>();
             
+            ICollection<Specie> totalSpecies = speciesRepo.GetEntities(size: int.MaxValue);
+            string[] filmSpecies = film.Species.ToArray();  // set to array to refer to each index
+                                                            // species list in film is in the same order as entire list
+
             IList<string> species = new List<string>();
-            foreach (string s in film.Species)
+            int i=0;
+            foreach (Specie s in totalSpecies)
             {
-                int specieId = Int32.Parse(Regex.Match(s, @"\d+").Value);
-                species.Add(speciesRepo.GetById(specieId).Name);
+                if (s.Url == filmSpecies[i])
+                {
+                    species.Add(s.Name);
+                    i++;
+                    if (i == filmSpecies.Count())
+                    {
+                        break;
+                    }
+                }
+                
             }
             ViewData["Species"] = species;
 

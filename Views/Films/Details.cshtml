@@ -22,9 +22,27 @@
     <td>@ViewData["ReleaseDate"]</td>
   </tr>
   <tr>
+    <td>Characters</td>
+    <td>
+        @foreach (string name in @ViewData["Characters"] as ICollection<string>)
+        {
+            <li>@name</li>
+        } 
+    </td>
+  </tr>
+  <tr>
+    <td>Planets</td>
+    <td>
+        @foreach (string name in @ViewData["Planets"] as ICollection<string>)
+        {
+            <li>@name</li>
+        } 
+    </td>
+  </tr>
+  <tr>
     <td>Species</td>
     <td>
-        @foreach (string name in @ViewData["Species"] as ICollection<string>)
+        @foreach (string name in @ViewData["Species"] as List<string>)
         {
             <li>@name</li>
         } 
@@ -43,24 +61,6 @@
     <td>Vehicles</td>
     <td>
         @foreach (string name in @ViewData["Vehicles"] as ICollection<string>)
-        {
-            <li>@name</li>
-        } 
-    </td>
-  </tr>
-  <tr>
-    <td>Characters</td>
-    <td>
-        @foreach (string name in @ViewData["Characters"] as ICollection<string>)
-        {
-            <li>@name</li>
-        } 
-    </td>
-  </tr>
-  <tr>
-    <td>Planets</td>
-    <td>
-        @foreach (string name in @ViewData["Planets"] as ICollection<string>)
         {
             <li>@name</li>
         } 
