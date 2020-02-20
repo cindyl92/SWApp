@@ -24,6 +24,6 @@ A2:
 Thanks!
 
 ### Screenshots
-[Screenshot_MovieListView](Screen Shot 2020-02-19 at 9.01.29 PM)
-[Screenshot_MovieDetailView1](Screen Shot 2020-02-19 at 9.06.39 PM)
-[Screenshot_MovieDetailView2](Screen Shot 2020-02-19 at 9.06.42 PM)
+[Screenshot_MovieListView](ListView.png)
+[Screenshot_MovieDetailView1](DetailView1.png)
+[Screenshot_MovieDetailView2](DetailView2.png)
