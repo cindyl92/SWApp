@@ -6,7 +6,7 @@ This application was built using [Star Wars API](https://swapi.com/) and the hel
 Please refer to:
 * [Controller](Controllers/FilmsController.cs)
 * [MovieListView](Views/Films/Index.cshtml)
-* [MovieDetailBiew](Views/Films/Details.cshtml)
+* [MovieDetailView](Views/Films/Details.cshtml)
 
 to see my coding.
 
