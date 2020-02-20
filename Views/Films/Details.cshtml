@@ -1,0 +1,69 @@
+<h2>@ViewData["FilmTitle"]</h2>
+
+<p>@ViewData["OpeningCrawl"]</p>
+
+<ul></ul>
+
+<table style="width:100%" border="1">
+  <tr>
+    <td>Episode ID</td>
+    <td>@ViewData["EpisodeId"]</td>
+  </tr>
+  <tr>
+    <td>Director</td>
+    <td>@ViewData["Director"]</td>
+  </tr>
+  <tr>
+    <td>Producer</td>
+    <td>@ViewData["Producer"]</td>
+  </tr>
+  <tr>
+    <td>Release Date</td>
+    <td>@ViewData["ReleaseDate"]</td>
+  </tr>
+  <tr>
+    <td>Species</td>
+    <td>
+        @foreach (string name in @ViewData["Species"] as ICollection<string>)
+        {
+            <li>@name</li>
+        } 
+    </td>
+  </tr>
+  <tr>
+    <td>Starships</td>
+    <td>
+        @foreach (string name in @ViewData["Starships"] as ICollection<string>)
+        {
+            <li>@name</li>
+        } 
+    </td>
+  </tr>
+  <tr>
+    <td>Vehicles</td>
+    <td>
+        @foreach (string name in @ViewData["Vehicles"] as ICollection<string>)
+        {
+            <li>@name</li>
+        } 
+    </td>
+  </tr>
+  <tr>
+    <td>Characters</td>
+    <td>
+        @foreach (string name in @ViewData["Characters"] as ICollection<string>)
+        {
+            <li>@name</li>
+        } 
+    </td>
+  </tr>
+  <tr>
+    <td>Planets</td>
+    <td>
+        @foreach (string name in @ViewData["Planets"] as ICollection<string>)
+        {
+            <li>@name</li>
+        } 
+    </td>
+  </tr>
+</table>
