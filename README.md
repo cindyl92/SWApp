@@ -24,6 +24,8 @@ A2:
 Thanks!
 
 ### Screenshots
-[Screenshot_MovieListView](ListView.png)
-[Screenshot_MovieDetailView1](DetailView1.png)
-[Screenshot_MovieDetailView2](DetailView2.png)
+![Screenshot_MovieListView](ListView.png)
+
+![Screenshot_MovieDetailView1](DetailView1.png)
+
+![Screenshot_MovieDetailView2](DetailView2.png)
